@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    'phonenumber_field',
+
     'property.apps.PropertyConfig',
 ]
 
@@ -100,3 +102,8 @@ DATABASES = {
         os.getenv('DATABASE', 'sqlite:///db.sqlite3')
     ),
 }
+
+# Phone Number Field settings
+PHONENUMBER_DB_FORMAT = "E164"
+PHONENUMBER_DEFAULT_FORMAT = "E164"
+PHONENUMBER_DEFAULT_REGION = "RU"
