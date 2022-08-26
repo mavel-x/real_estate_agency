@@ -63,6 +63,9 @@ class Owner(models.Model):
     flats = models.ManyToManyField(Flat, verbose_name='квартиры в собственности',
                                    related_name='owners')
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Complaint(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
@@ -70,3 +73,6 @@ class Complaint(models.Model):
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE,
                              verbose_name='квартира, на которую пожаловались')
     text = models.TextField('текст жалобы')
+
+    def __str__(self):
+        return f'Жалоба #{self.pk} на {self.flat}'
