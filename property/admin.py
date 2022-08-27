@@ -13,6 +13,7 @@ class FlatAdmin(admin.ModelAdmin):
         'new_building',
         'construction_year',
         'town',
+        'owner',
         'owners_phonenumber',
         'owner_pure_phone',
     )
@@ -28,4 +29,9 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
+    search_fields = ('normalized_phone', 'name', 'pk')
     raw_id_fields = ('flats',)
+    list_display = (
+        'name',
+        'normalized_phone',
+    )
