@@ -14,7 +14,7 @@ def normalize_phone_numbers(apps, schema_editor):
         return phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
 
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         flat.owner_pure_phone = normalize_number(flat.owners_phonenumber)
         flat.save()
 
